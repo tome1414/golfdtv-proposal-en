@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLF DTV Proposal 3/3 – Mutual Benefits for Golfdigg</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: #fff;
+    padding: 32px 40px 28px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #1a6b3c;
+  }
+  .header-left .label { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #1a6b3c; text-transform: uppercase; }
+  .header-left .subtitle { font-size: 13px; color: #555; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 10px; color: #888; line-height: 1.6; }
+
+  .benefit-badge {
+    display: inline-block;
+    background: #1a6b3c;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .section-lead {
+    font-size: 10px;
+    color: #555;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #f7f9f7;
+    border-left: 3px solid #1a6b3c;
+  }
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, #1a6b3c33, #1a6b3c, #1a6b3c33);
+    margin: 10px 0;
+  }
+  .sub-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a6b3c;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sub-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 13px;
+    background: #1a6b3c;
+    border-radius: 2px;
+  }
+
+  /* Community stats */
+  .community-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .stat-card {
+    background: linear-gradient(135deg, #1a6b3c, #0d4a28);
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+    color: #fff;
+  }
+  .stat-card .sc-icon { font-size: 18px; margin-bottom: 4px; }
+  .stat-card .sc-num { font-size: 20px; font-weight: 900; font-family: 'Inter', sans-serif; line-height: 1; }
+  .stat-card .sc-label { font-size: 8px; color: #b8f5cc; margin-top: 3px; line-height: 1.3; }
+
+  /* Banner mockups */
+  .banner-section { margin-bottom: 12px; }
+  .banner-mockup {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f9fa;
+  }
+  .browser-bar {
+    background: #e8e8e8;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    color: #666;
+  }
+  .browser-dots { display: flex; gap: 4px; }
+  .browser-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .browser-url {
+    background: #fff;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 9px;
+    color: #444;
+    flex: 1;
+  }
+  .site-nav {
+    background: #1a1a2e;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .site-logo { font-size: 13px; font-weight: 900; color: #fff; margin-right: 20px; }
+  .site-logo span { color: #4ade80; }
+  .nav-items { display: flex; gap: 0; }
+  .nav-item {
+    font-size: 9px;
+    color: #aaa;
+    padding: 5px 12px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-item.active { color: #fff; border-bottom-color: #4ade80; }
+  .nav-item.new-tab {
+    background: linear-gradient(135deg, #1a6b3c, #0d4a28);
+    color: #fff !important;
+    border-radius: 4px;
+    font-weight: 700;
+    border-bottom: none !important;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .new-tab-badge {
+    background: #e6a817;
+    color: #000;
+    font-size: 7px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  .site-content {
+    padding: 12px 16px;
+    background: #fff;
+    display: flex;
+    gap: 12px;
+  }
+  .site-main { flex: 1; }
+  .site-sidebar { width: 160px; }
+  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .course-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .course-img {
+    height: 40px;
+    background: linear-gradient(135deg, #2d5a27, #4a8c3f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .course-info { padding: 4px 6px; }
+  .course-name { font-size: 8px; font-weight: 700; color: #111; }
+  .course-price { font-size: 7.5px; color: #888; }
+  .sidebar-banner {
+    background: linear-gradient(135deg, #1a6b3c, #0d4a28);
+    border-radius: 6px;
+    padding: 10px 8px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .sb-icon { font-size: 20px; margin-bottom: 4px; }
+  .sb-title { font-size: 9px; font-weight: 900; margin-bottom: 2px; line-height: 1.3; }
+  .sb-sub { font-size: 7.5px; color: #b8f5cc; margin-bottom: 6px; }
+  .sb-btn {
+    background: #e6a817;
+    color: #000;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .placement-note {
+    font-size: 8px;
+    color: #888;
+    text-align: center;
+    padding: 5px;
+    background: #f7f9f7;
+    border-top: 1px dashed #c8e6d4;
+  }
+
+  /* Merit cards */
+  .merit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .merit-card {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+  }
+  .merit-card.highlight {
+    border-color: #1a6b3c;
+    background: #f7f9f7;
+  }
+  .merit-num {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: #1a6b3c;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .merit-icon { font-size: 20px; margin-bottom: 5px; }
+  .merit-title { font-size: 11px; font-weight: 700; color: #111; margin-bottom: 4px; }
+  .merit-card.highlight .merit-title { color: #1a6b3c; }
+  .merit-body { font-size: 8.5px; color: #444; line-height: 1.6; }
+  .merit-tag {
+    display: inline-block;
+    background: #f0f7f3;
+    color: #1a6b3c;
+    border: 1px solid #c8e6d4;
+    font-size: 7.5px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-right: 3px;
+  }
+
+  /* Win-Win diagram */
+  .winwin-section { margin-bottom: 12px; }
+  .winwin-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #f7f9f7;
+    border: 1px solid #c8e6d4;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ww-side {
+    flex: 1;
+    padding: 12px 14px;
+  }
+  .ww-side.left { background: linear-gradient(135deg, #1a6b3c, #0d4a28); color: #fff; }
+  .ww-side.right { background: linear-gradient(135deg, #1a3a6b, #0d2848); color: #fff; }
+  .ww-logo { font-size: 11px; font-weight: 900; margin-bottom: 6px; }
+  .ww-item {
+    font-size: 8.5px;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    line-height: 1.4;
+  }
+  .ww-item:last-child { border-bottom: none; }
+  .ww-item::before { content: '▶'; font-size: 7px; flex-shrink: 0; margin-top: 2px; }
+  .ww-center {
+    width: 60px;
+    flex-shrink: 0;
+    background: #e6a817;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 4px;
+    gap: 4px;
+  }
+  .ww-center .arrow { font-size: 14px; color: #000; }
+  .ww-center .label { font-size: 8px; font-weight: 700; color: #000; text-align: center; line-height: 1.3; }
+
+  /* CTA */
+  .cta-box {
+    background: linear-gradient(135deg, #1a6b3c, #0d4a28);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .cta-box .cta-icon { font-size: 28px; flex-shrink: 0; }
+  .cta-box .cta-title { font-size: 13px; font-weight: 900; margin-bottom: 4px; }
+  .cta-box .cta-body { font-size: 9px; color: #b8f5cc; line-height: 1.6; }
+
+  .footer {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left { font-size: 8.5px; color: #888; }
+  .footer-right { font-size: 9px; color: #888; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="label">BENEFIT 02 — MUTUAL BENEFITS</div>
+      <div class="subtitle">DTVClub Community × Golfdigg — A True Win-Win Partnership</div>
+    </div>
+    <div class="header-right">
+      Benefits for Golfdigg<br>upon Partnership<br>3 / 3
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="benefit-badge">BENEFIT 02 — WHAT GOLFDIGG GAINS</div>
+  <div class="section-title">100,000+ DTV Community Members Become Golfdigg's New User Base</div>
+  <div class="section-lead">DTVClub is the global community for DTV visa holders and applicants. Long-term Thailand residents are potential golfers — and Golfdigg is their most direct path to the course.</div>
+
+  <!-- Community stats -->
+  <div class="sub-title">DTVClub Community Scale (as of 2025)</div>
+  <div class="community-stats">
+    <div class="stat-card">
+      <div class="sc-icon">👥</div>
+      <div class="sc-num">100K+</div>
+      <div class="sc-label">Facebook<br>Group Members</div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon">🌍</div>
+      <div class="sc-num">50+</div>
+      <div class="sc-label">Countries<br>Represented</div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon">📅</div>
+      <div class="sc-num">Daily</div>
+      <div class="sc-label">Active DTV<br>Discussions</div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon">⛳</div>
+      <div class="sc-num">96%</div>
+      <div class="sc-label">GOLF DTV<br>Visa Success Rate</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Banner placement mockups -->
+  <div class="banner-section">
+    <div class="sub-title">Golfdigg Promotion Mockup — DTVClub Website, Discord &amp; Facebook</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:6px;">
+
+      <!-- DTVClub.com website -->
+      <div class="banner-mockup">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <div class="browser-dot" style="background:#ff5f56"></div>
+            <div class="browser-dot" style="background:#ffbd2e"></div>
+            <div class="browser-dot" style="background:#27c93f"></div>
+          </div>
+          <div class="browser-url" style="font-size:8px;">🔒 dtvclub.com</div>
+        </div>
+        <div style="background:#0d1117;padding:6px 10px;">
+          <div style="font-size:9px;font-weight:900;color:#4ade80;">DTVClub</div>
+        </div>
+        <div style="padding:8px 10px;background:#fff;">
+          <div style="font-size:8px;font-weight:700;color:#111;margin-bottom:6px;">Thailand Living Guide</div>
+          <div style="background:linear-gradient(135deg,#1a3a6b,#0d2848);border-radius:5px;padding:8px;text-align:center;color:#fff;">
+            <div style="font-size:8px;font-weight:900;margin-bottom:3px;">⛳ Enjoy Golf in Thailand!</div>
+            <div style="font-size:7px;color:#b8d4f5;margin-bottom:5px;">Book your course easily with Golfdigg</div>
+            <div style="background:#e6a817;color:#000;font-size:7px;font-weight:700;padding:3px 8px;border-radius:3px;display:inline-block;">Book on Golfdigg →</div>
+          </div>
+          <div style="font-size:7px;color:#888;text-align:center;margin-top:4px;">Sidebar banner placement</div>
+        </div>
+      </div>
+
+      <!-- Discord -->
+      <div class="banner-mockup">
+        <div style="background:#5865f2;padding:6px 10px;display:flex;align-items:center;gap:6px;">
+          <div style="font-size:9px;font-weight:900;color:#fff;">💬 DTVClub Discord</div>
+        </div>
+        <div style="background:#36393f;padding:8px 10px;">
+          <div style="font-size:7.5px;color:#8e9297;margin-bottom:4px;"># thailand-living</div>
+          <div style="background:#2f3136;border-radius:4px;padding:6px 8px;margin-bottom:4px;">
+            <div style="font-size:7px;color:#7289da;font-weight:700;margin-bottom:2px;">DTVClub Bot 📢</div>
+            <div style="font-size:7.5px;color:#dcddde;line-height:1.4;">Looking to play golf in Thailand? ⛳<br>We recommend <span style="color:#7289da;font-weight:700;">Golfdigg</span> for easy course booking!</div>
+          </div>
+          <div style="background:#2f3136;border-radius:4px;padding:6px 8px;border-left:3px solid #5865f2;">
+            <div style="font-size:7px;color:#b9bbbe;margin-bottom:2px;">🔗 Golfdigg Official</div>
+            <div style="font-size:7.5px;color:#7289da;">golfdigg.com/en</div>
+            <div style="font-size:7px;color:#b9bbbe;margin-top:2px;">Book golf courses across Thailand</div>
+          </div>
+        </div>
+        <div class="placement-note">Discord channel promotion</div>
+      </div>
+
+      <!-- Facebook -->
+      <div class="banner-mockup">
+        <div style="background:#1877f2;padding:6px 10px;">
+          <div style="font-size:9px;font-weight:900;color:#fff;">📘 DTVClub Facebook</div>
+        </div>
+        <div style="background:#f0f2f5;padding:8px 10px;">
+          <div style="background:#fff;border-radius:6px;padding:8px;box-shadow:0 1px 4px rgba(0,0,0,0.1);">
+            <div style="font-size:7px;font-weight:700;color:#111;margin-bottom:2px;">DTVClub Official</div>
+            <div style="font-size:7px;color:#888;margin-bottom:5px;">📍 Thailand Living Tips</div>
+            <div style="font-size:7.5px;color:#333;line-height:1.5;margin-bottom:6px;">Enjoying golf in Thailand after getting your DTV? 🏌️<br>Book your next round easily with <strong>Golfdigg</strong> — courses all across Thailand!</div>
+            <div style="background:linear-gradient(135deg,#1a3a6b,#0d2848);border-radius:4px;padding:6px;text-align:center;">
+              <div style="font-size:8px;font-weight:700;color:#fff;">⛳ Book on Golfdigg</div>
+              <div style="font-size:7px;color:#b8d4f5;">golfdigg.com/en</div>
+            </div>
+          </div>
+        </div>
+        <div class="placement-note">Facebook post &amp; pinned announcement</div>
+      </div>
+
+    </div>
+    <div style="background:#f7f9f7;border:1px dashed #c8e6d4;border-radius:5px;padding:6px 12px;font-size:8px;color:#555;text-align:center;">
+      * The above are mockup images for reference. All actual content and design will be created and proposed by our team. Zero burden on Golfdigg.
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Merit cards -->
+  <div class="sub-title">Concrete Benefits Golfdigg Will Gain</div>
+  <div class="merit-grid">
+    <div class="merit-card highlight">
+      <div class="merit-num">MERIT 01</div>
+      <div class="merit-icon">🎯</div>
+      <div class="merit-title">Access to "Premium Golf Customers" — Long-Term Thailand Residents</div>
+      <div class="merit-body">DTV holders stay in Thailand for an average of 180+ days — they are natural repeat customers. This opens direct access to the highest-value segment: foreign golfers who actually live in Thailand.</div>
+      <span class="merit-tag">New Customer Acquisition</span>
+      <span class="merit-tag">High-Value Segment</span>
+    </div>
+    <div class="merit-card highlight">
+      <div class="merit-num">MERIT 02</div>
+      <div class="merit-icon">🌐</div>
+      <div class="merit-title">Brand Exposure to 50+ Countries Worldwide</div>
+      <div class="merit-body">DTVClub's Facebook group has 100,000+ members from Japan, Europe, the US, and across Asia. Golfdigg's services can be naturally promoted to a truly global community of golf enthusiasts.</div>
+      <span class="merit-tag">Global Exposure</span>
+      <span class="merit-tag">Word-of-Mouth</span>
+    </div>
+    <div class="merit-card highlight">
+      <div class="merit-num">MERIT 03</div>
+      <div class="merit-icon">🏆</div>
+      <div class="merit-title">Establish Authority as the "Golf Visa" Platform</div>
+      <div class="merit-body">As Golfdigg becomes known as the place to find golf visa information, it evolves beyond a booking service into a trusted "Total Thailand Golf Life Platform" — a powerful brand differentiator.</div>
+      <span class="merit-tag">Brand Value</span>
+      <span class="merit-tag">Differentiation</span>
+    </div>
+    <div class="merit-card highlight">
+      <div class="merit-num">MERIT 04</div>
+      <div class="merit-icon">🔄</div>
+      <div class="merit-title">Continuous Referrals from DTVClub Community</div>
+      <div class="merit-body">We will continuously promote Golfdigg across our SNS channels, community, and newsletter. As part of our Thailand living guides for DTV holders, Golfdigg will receive regular, ongoing exposure.</div>
+      <span class="merit-tag">Ongoing Referrals</span>
+      <span class="merit-tag">Cross-Promotion</span>
+    </div>
+  </div>
+
+  <!-- Win-Win diagram -->
+  <div class="winwin-section">
+    <div class="winwin-container">
+      <div class="ww-side left">
+        <div class="ww-logo">⛳ GOLF DTV / DTVClub</div>
+        <div class="ww-item">Drive visa applicants to Golfdigg users</div>
+        <div class="ww-item">Continuously promote Golfdigg on DTVClub SNS</div>
+        <div class="ww-item">Create all tab &amp; banner content at our expense</div>
+        <div class="ww-item">10% cashback for Golfdigg-referred users</div>
+      </div>
+      <div class="ww-center">
+        <div class="arrow">⇄</div>
+        <div class="label">Win-Win<br>Partner</div>
+      </div>
+      <div class="ww-side right">
+        <div class="ww-logo">🏌️ Golfdigg</div>
+        <div class="ww-item">Brand exposure to 100K+ community</div>
+        <div class="ww-item">Acquire high-value long-stay golfers</div>
+        <div class="ww-item">Build authority as the "Golf Visa" platform</div>
+        <div class="ww-item">Reach 50+ countries of global users</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-icon">🤝</div>
+    <div>
+      <div class="cta-title">Let's Start with a Conversation</div>
+      <div class="cta-body">Whether it's tab placement format, banner design, or social media content — our team will fully support you to minimize any burden on Golfdigg. Let's take the first small step together.</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">GOLF DTV — dtvclub.com/golf-dtv ｜ DTVClub — dtvclub.com</div>
+    <div class="footer-right">3 / 3</div>
+  </div>
+
+</div>
+</body>
+</html>
