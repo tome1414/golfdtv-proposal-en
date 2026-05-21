@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLF DTV Proposal 2/3 – Cashback Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: #fff;
+    padding: 36px 44px 32px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #1a6b3c;
+  }
+  .header-left .label { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #1a6b3c; text-transform: uppercase; }
+  .header-left .subtitle { font-size: 13px; color: #555; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 10px; color: #888; line-height: 1.6; }
+
+  .benefit-badge {
+    display: inline-block;
+    background: #1a6b3c;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .section-lead {
+    font-size: 10.5px;
+    color: #555;
+    margin-bottom: 14px;
+    padding: 6px 10px;
+    background: #f7f9f7;
+    border-left: 3px solid #1a6b3c;
+  }
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, #1a6b3c33, #1a6b3c, #1a6b3c33);
+    margin: 12px 0;
+  }
+  .sub-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a6b3c;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sub-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    background: #1a6b3c;
+    border-radius: 2px;
+  }
+
+  /* Form mock */
+  .form-mock {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .form-mock-header {
+    background: #f7f9f7;
+    padding: 8px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .form-mock-body { padding: 12px 14px; }
+  .form-question {
+    font-size: 10px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+  }
+  .form-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 9.5px;
+    color: #333;
+  }
+  .form-option.highlight {
+    background: #f0f7f3;
+    border: 1.5px solid #1a6b3c;
+    font-weight: 700;
+    color: #1a6b3c;
+  }
+  .form-option .radio {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-option.highlight .radio {
+    border-color: #1a6b3c;
+    background: #1a6b3c;
+  }
+  .form-option.highlight .radio::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .new-badge {
+    background: #e6a817;
+    color: #000;
+    font-size: 7.5px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-left: auto;
+  }
+  .form-note {
+    font-size: 8.5px;
+    color: #888;
+    text-align: center;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #e0e0e0;
+  }
+
+  /* Plan cards */
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .plan-card {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .plan-card.featured {
+    border-color: #e6a817;
+    box-shadow: 0 2px 12px rgba(230,168,23,0.2);
+  }
+  .plan-card .plan-badge {
+    background: #e6a817;
+    color: #000;
+    font-size: 8px;
+    font-weight: 700;
+    text-align: center;
+    padding: 3px;
+    letter-spacing: 1px;
+  }
+  .plan-card .plan-header {
+    padding: 12px 14px 8px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .plan-card .plan-tier {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 2px;
+  }
+  .plan-card.featured .plan-tier { color: #b07a00; }
+  .plan-card .plan-name {
+    font-size: 18px;
+    font-weight: 900;
+    color: #1a6b3c;
+    margin-bottom: 2px;
+  }
+  .plan-card.featured .plan-name { color: #b07a00; }
+  .plan-card .plan-price {
+    font-size: 22px;
+    font-weight: 900;
+    color: #111;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .plan-card .plan-price span { font-size: 11px; font-weight: 400; color: #888; }
+  .plan-card .cashback-box {
+    background: #fff8e6;
+    border: 1px solid #f0d080;
+    border-radius: 5px;
+    padding: 6px 10px;
+    margin: 8px 0;
+    text-align: center;
+  }
+  .plan-card .cashback-box .cb-label { font-size: 8px; color: #888; margin-bottom: 2px; }
+  .plan-card .cashback-box .cb-amount { font-size: 16px; font-weight: 900; color: #b07a00; font-family: 'Inter', sans-serif; }
+  .plan-card .cashback-box .cb-sub { font-size: 8px; color: #888; }
+  .plan-card .plan-body { padding: 0 14px 12px; }
+  .plan-card .feature-list { list-style: none; }
+  .plan-card .feature-list li {
+    font-size: 8.5px;
+    color: #444;
+    padding: 4px 0;
+    border-bottom: 1px dashed #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .plan-card .feature-list li:last-child { border-bottom: none; }
+  .plan-card .feature-list li::before { content: '✓'; color: #1a6b3c; font-weight: 700; }
+
+  /* Cashback flow */
+  .cashback-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+  .cf-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .cf-step .step-num {
+    width: 24px;
+    height: 24px;
+    background: #1a6b3c;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 4px;
+  }
+  .cf-step .step-label { font-size: 8px; color: #888; margin-bottom: 2px; }
+  .cf-step .step-title { font-size: 9.5px; font-weight: 700; color: #111; }
+  .cf-arrow {
+    font-size: 16px;
+    color: #1a6b3c;
+    padding: 0 4px;
+    flex-shrink: 0;
+    margin-bottom: 14px;
+  }
+
+  .footer {
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left { font-size: 8.5px; color: #888; }
+  .footer-right { font-size: 9px; color: #888; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="label">BENEFIT 01</div>
+      <div class="subtitle">Cashback Program for Golfdigg Users</div>
+    </div>
+    <div class="header-right">
+      Benefits for Golfdigg<br>upon Partnership<br>2 / 3
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="benefit-badge">BENEFIT 01 — USER CASHBACK PROGRAM</div>
+  <div class="section-title">10% School Fee Cashback for Users Who Apply via Golfdigg</div>
+  <div class="section-lead">Add a survey question to the GOLF DTV application form → Track Golfdigg-referred users → Issue cashback upon successful visa acquisition</div>
+
+  <!-- Form mock -->
+  <div class="sub-title">Survey Question Added to GOLF DTV Application Form (Mockup)</div>
+  <div class="form-mock">
+    <div class="form-mock-header">
+      📋 GOLF DTV Free Consultation &amp; Application Form
+    </div>
+    <div class="form-mock-body">
+      <div class="form-question">Q. How did you hear about GOLF DTV? (Required)</div>
+      <div class="form-options">
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>🔍 Google Search</span>
+        </div>
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>📸 Instagram</span>
+        </div>
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>📘 Facebook</span>
+        </div>
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>▶️ YouTube</span>
+        </div>
+        <div class="form-option highlight">
+          <div class="radio"><span></span></div>
+          <span>⛳ Golfdigg (Golf Booking Platform)</span>
+          <span class="new-badge">NEW ITEM</span>
+        </div>
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>🌐 DTVClub.com</span>
+        </div>
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>👥 Referral from a Friend</span>
+        </div>
+        <div class="form-option">
+          <div class="radio"></div>
+          <span>📝 Other</span>
+        </div>
+      </div>
+      <div class="form-note">* Users who select "Golfdigg" and successfully obtain a DTV visa will receive a 10% cashback on their school fee</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Plan cards -->
+  <div class="sub-title">Cashback Amount by Plan</div>
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="plan-header">
+        <div class="plan-tier">SILVER</div>
+        <div class="plan-name">Silver</div>
+        <div style="font-size:9px;color:#888;margin-bottom:6px;">School Fee</div>
+        <div class="plan-price">20,000 <span>THB</span></div>
+        <div class="cashback-box">
+          <div class="cb-label">Cashback Amount</div>
+          <div class="cb-amount">2,000 THB</div>
+          <div class="cb-sub">(10% of school fee)</div>
+        </div>
+      </div>
+      <div class="plan-body">
+        <ul class="feature-list">
+          <li>DTV Application Acceptance Letter</li>
+          <li>Indoor Golf Facility Access</li>
+          <li>Video Curriculum Access</li>
+          <li>Free Golf Club Rental</li>
+        </ul>
+      </div>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-badge">MOST POPULAR</div>
+      <div class="plan-header">
+        <div class="plan-tier">GOLD</div>
+        <div class="plan-name">Gold</div>
+        <div style="font-size:9px;color:#888;margin-bottom:6px;">School Fee</div>
+        <div class="plan-price">50,000 <span>THB</span></div>
+        <div class="cashback-box">
+          <div class="cb-label">Cashback Amount</div>
+          <div class="cb-amount">5,000 THB</div>
+          <div class="cb-sub">(10% of school fee)</div>
+        </div>
+      </div>
+      <div class="plan-body">
+        <ul class="feature-list">
+          <li>DTV Application Acceptance Letter</li>
+          <li>One-on-One Lessons</li>
+          <li>Indoor Golf Facility Access</li>
+          <li>Thailand Golf Round Voucher</li>
+        </ul>
+      </div>
+    </div>
+    <div class="plan-card">
+      <div class="plan-header">
+        <div class="plan-tier">PREMIUM</div>
+        <div class="plan-name">Platinum</div>
+        <div style="font-size:9px;color:#888;margin-bottom:6px;">School Fee</div>
+        <div class="plan-price">100,000 <span>THB</span></div>
+        <div class="cashback-box">
+          <div class="cb-label">Cashback Amount</div>
+          <div class="cb-amount">10,000 THB</div>
+          <div class="cb-sub">(10% of school fee)</div>
+        </div>
+      </div>
+      <div class="plan-body">
+        <ul class="feature-list">
+          <li>DTV Application Acceptance Letter</li>
+          <li>One-on-One Lessons</li>
+          <li>Indoor Golf Facility Access</li>
+          <li>Thailand Golf Round Voucher</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Cashback flow -->
+  <div class="sub-title">Cashback Process Flow</div>
+  <div class="cashback-flow">
+    <div class="cf-step">
+      <div class="step-num">1</div>
+      <div class="step-label">Golfdigg</div>
+      <div class="step-title">Click the Tab</div>
+    </div>
+    <div class="cf-arrow">→</div>
+    <div class="cf-step">
+      <div class="step-num">2</div>
+      <div class="step-label">GOLF DTV</div>
+      <div class="step-title">Visit Landing Page</div>
+    </div>
+    <div class="cf-arrow">→</div>
+    <div class="cf-step">
+      <div class="step-num">3</div>
+      <div class="step-label">Survey</div>
+      <div class="step-title">Select "Golfdigg"</div>
+    </div>
+    <div class="cf-arrow">→</div>
+    <div class="cf-step">
+      <div class="step-num">4</div>
+      <div class="step-label">DTV Visa</div>
+      <div class="step-title">Successfully Obtained</div>
+    </div>
+    <div class="cf-arrow">→</div>
+    <div class="cf-step">
+      <div class="step-num">5</div>
+      <div class="step-label">School Fee</div>
+      <div class="step-title">10% Cashback Issued</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">GOLF DTV — dtvclub.com/golf-dtv ｜ DTVClub — dtvclub.com</div>
+    <div class="footer-right">2 / 3</div>
+  </div>
+
+</div>
+</body>
+</html>
