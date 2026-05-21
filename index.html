@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLF DTV × Golfdigg Partnership Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+  .top-nav {
+    width: 100%;
+    max-width: 860px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .top-nav .logo {
+    font-size: 14px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .top-nav .logo span { color: #4ade80; }
+  .page-tabs {
+    display: flex;
+    gap: 8px;
+  }
+  .page-tab {
+    background: rgba(255,255,255,0.1);
+    color: #ccc;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .page-tab.active {
+    background: #1a6b3c;
+    color: #fff;
+    font-weight: 700;
+  }
+  .page-tab:hover:not(.active) {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+  }
+  .frame-container {
+    width: 100%;
+    max-width: 860px;
+    background: #f0f2f5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  iframe {
+    width: 100%;
+    height: 1160px;
+    border: none;
+    display: block;
+  }
+  .bottom-nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .nav-btn {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { background: #1a6b3c; border-color: #1a6b3c; }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .page-indicator {
+    color: #aaa;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .dot.active { background: #4ade80; }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="logo">GOLF DTV <span>×</span> Golfdigg Partnership Proposal</div>
+  <div class="page-tabs">
+    <button class="page-tab active" onclick="goTo(0)">1. Partnership Request</button>
+    <button class="page-tab" onclick="goTo(1)">2. Cashback Program</button>
+    <button class="page-tab" onclick="goTo(2)">3. Mutual Benefits</button>
+  </div>
+</div>
+
+<div class="frame-container">
+  <iframe id="mainFrame" src="page1.html"></iframe>
+</div>
+
+<div class="bottom-nav">
+  <button class="nav-btn" id="prevBtn" onclick="prev()" disabled>← Previous</button>
+  <div class="page-indicator">
+    <div class="dot active" id="dot0" onclick="goTo(0)"></div>
+    <div class="dot" id="dot1" onclick="goTo(1)"></div>
+    <div class="dot" id="dot2" onclick="goTo(2)"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="next()">Next →</button>
+</div>
+
+<script>
+  const pages = ['page1.html', 'page2.html', 'page3.html'];
+  let current = 0;
+
+  function goTo(idx) {
+    current = idx;
+    document.getElementById('mainFrame').src = pages[current];
+    document.querySelectorAll('.page-tab').forEach((t, i) => t.classList.toggle('active', i === current));
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === pages.length - 1;
+  }
+
+  function prev() { if (current > 0) goTo(current - 1); }
+  function next() { if (current < pages.length - 1) goTo(current + 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+</script>
+</body>
+</html>
