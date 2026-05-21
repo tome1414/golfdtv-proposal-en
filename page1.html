@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLF DTV Proposal 1/3 – Partnership Request</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: #fff;
+    padding: 36px 44px 32px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #1a6b3c;
+  }
+  .header-left .brand { font-size: 11px; font-weight: 700; color: #1a6b3c; letter-spacing: 1px; }
+  .header-left .tagline { font-size: 16px; font-weight: 900; color: #111; margin-top: 2px; }
+  .header-right { text-align: right; font-size: 10px; color: #888; line-height: 1.6; }
+
+  .section-badge {
+    display: inline-block;
+    background: #1a6b3c;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .info-box {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .info-box .box-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #1a6b3c;
+    margin-bottom: 6px;
+  }
+  .info-box .box-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  .info-box p {
+    font-size: 9.5px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .stat-item {
+    background: #f7f9f7;
+    border-radius: 5px;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-item .stat-icon { font-size: 14px; }
+  .stat-item .stat-label { font-size: 8px; color: #888; }
+  .stat-item .stat-val { font-size: 12px; font-weight: 700; color: #1a6b3c; }
+
+  .check-list { list-style: none; }
+  .check-list li {
+    font-size: 9.5px;
+    color: #333;
+    padding: 4px 0;
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.5;
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: '✅';
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .flow-section { margin-bottom: 14px; }
+  .flow-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a6b3c;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .flow-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    background: #1a6b3c;
+    border-radius: 2px;
+  }
+  .flow-container {
+    background: #f7f9f7;
+    border: 1px solid #c8e6d4;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 10px;
+  }
+  .flow-box {
+    background: #fff;
+    border: 1.5px solid #1a6b3c;
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: center;
+    flex: 1;
+  }
+  .flow-box .fb-label { font-size: 8px; color: #888; margin-bottom: 2px; }
+  .flow-box .fb-title { font-size: 10px; font-weight: 700; color: #1a6b3c; }
+  .flow-box .fb-sub { font-size: 8px; color: #555; margin-top: 2px; }
+  .flow-arrow {
+    font-size: 16px;
+    color: #1a6b3c;
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+  .flow-or {
+    background: #e6a817;
+    color: #000;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin: 0 6px;
+    flex-shrink: 0;
+  }
+  .flow-box.dashed {
+    border-style: dashed;
+    border-color: #aaa;
+  }
+  .flow-box.dashed .fb-title { color: #555; }
+  .flow-goal {
+    background: linear-gradient(135deg, #1a6b3c, #0d4a28);
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 14px;
+    text-align: center;
+    flex: 0 0 auto;
+  }
+  .flow-goal .fg-label { font-size: 8px; color: #b8f5cc; margin-bottom: 2px; }
+  .flow-goal .fg-title { font-size: 10px; font-weight: 700; }
+  .flow-note {
+    font-size: 8.5px;
+    color: #666;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .sns-section { margin-bottom: 14px; }
+  .sns-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .sns-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f7f9f7;
+    border: 1px solid #c8e6d4;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .summary-box {
+    background: #f7f9f7;
+    border: 1.5px solid #1a6b3c;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+  }
+  .summary-box .sum-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a6b3c;
+    margin-bottom: 8px;
+  }
+  .summary-box .sum-item {
+    font-size: 9.5px;
+    color: #333;
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.5;
+  }
+  .summary-box .sum-item::before {
+    content: '★';
+    color: #e6a817;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .footer {
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left { font-size: 8.5px; color: #888; }
+  .footer-right { font-size: 9px; color: #888; }
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, #1a6b3c33, #1a6b3c, #1a6b3c33);
+    margin: 12px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="brand">GOLF DTV</div>
+      <div class="tagline">Get Your Thailand 5-Year Visa Through Golf.</div>
+    </div>
+    <div class="header-right">
+      Partnership Proposal<br>1 / 3
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="section-badge">PROPOSAL — PARTNERSHIP REQUEST</div>
+  <div class="section-title">Request for Tab Placement &amp; LP Integration on Golfdigg</div>
+
+  <!-- 2-column info -->
+  <div class="two-col">
+    <div class="info-box">
+      <div class="box-label">DTV (Destination Thailand Visa)</div>
+      <div class="box-title">Thailand's New 5-Year Long-Stay Visa</div>
+      <p>The DTV (Destination Thailand Visa) is a <strong>5-year long-stay visa</strong> newly established by the Thai government in 2024. Renewable every 180 days, it allows continuous long-term residence in Thailand for up to 5 years.</p>
+      <p><strong>Eligible purposes:</strong> Workation (digital nomads, remote workers, freelancers), Soft Power activities (Muay Thai, Thai cuisine, medical treatment, cultural arts), and Family (spouses/children of DTV holders).</p>
+      <div class="stat-row">
+        <div class="stat-item">
+          <span class="stat-icon">📅</span>
+          <div><div class="stat-label">Validity</div><div class="stat-val">5 Years</div></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🔄</span>
+          <div><div class="stat-label">Renewal Cycle</div><div class="stat-val">Every 180 Days</div></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">✈️</span>
+          <div><div class="stat-label">Multi-Entry</div><div class="stat-val">Unlimited</div></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">💰</span>
+          <div><div class="stat-label">Bank Balance</div><div class="stat-val">500K THB+</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="box-label">What is GOLF DTV?</div>
+      <div class="box-title">The Industry's First &amp; Only DTV Visa Program via Golf School</div>
+      <p>GOLF DTV helps you obtain a Thailand 5-year visa safely and reliably through a Thailand PGA-affiliated golf school enrollment certificate. 96% success rate, full legal compliance &amp; visa expertise, and 100% school fee refund if the application is rejected.</p>
+      <ul class="check-list">
+        <li>Direct coordination with Thai embassies &amp; consulates worldwide</li>
+        <li>Full legal verification by Visa &amp; Legal Compliance experts</li>
+        <li>Thailand PGA-certified professional golf school partnership</li>
+        <li>100% school fee refund guarantee if application is rejected</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Flow diagram -->
+  <div class="flow-section">
+    <div class="flow-title">Request ①: Tab Placement &amp; LP Integration Flow</div>
+    <div class="flow-container">
+      <div class="flow-row">
+        <div class="flow-box">
+          <div class="fb-label">Golfdigg</div>
+          <div class="fb-title">Navigation</div>
+          <div class="fb-sub">🏌️ "Golf Thai VISA" Tab</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-arrow" style="font-size:9px;color:#555;padding:0;">Click</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <div class="fb-label">Option A (Direct Link)</div>
+          <div class="fb-title">GOLF DTV</div>
+          <div class="fb-sub">Landing Page<br>dtvclub.com/golf-dtv</div>
+        </div>
+        <div class="flow-or">OR</div>
+        <div class="flow-box dashed">
+          <div class="fb-label">Option B (Intermediate Page)</div>
+          <div class="fb-title">Golf Thai VISA Tab</div>
+          <div class="fb-sub">DTV Info Page<br>(Hosted on Golfdigg)<br>↓ CTA Button</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-goal">
+          <div class="fg-label">Final Goal</div>
+          <div class="fg-title">GOLF DTV LP<br>Free Consultation</div>
+        </div>
+      </div>
+      <div class="flow-note">* We will provide all text content and design proposals. Please feel free to consult with us.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- SNS -->
+  <div class="sns-section">
+    <div class="flow-title">Request ②: Social Media Promotion</div>
+    <p style="font-size:9.5px;color:#444;line-height:1.7;margin-bottom:8px;">We kindly request Golfdigg's official social media channels (Instagram, Facebook, X, etc.) to share information about the DTV visa and GOLF DTV. <strong>We will provide all text and visual materials.</strong> Together, we can deliver the exciting message that golfers can live long-term in Thailand while enjoying golf.</p>
+    <div class="sns-row">
+      <div class="sns-badge">📸 Instagram Post</div>
+      <div class="sns-badge">📘 Facebook Post</div>
+      <div class="sns-badge">🐦 X (Twitter)</div>
+      <div class="sns-badge">💬 LINE Official</div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary-box">
+    <div class="sum-title">Summary of Our Requests</div>
+    <div class="sum-item">① Add a "Golf Thai VISA" tab to Golfdigg's navigation, directing users to the GOLF DTV landing page</div>
+    <div class="sum-item">② Share DTV visa &amp; GOLF DTV information on Golfdigg's official social media channels</div>
+    <div class="sum-item">③ We will provide all text and materials (minimizing the burden on Golfdigg's team)</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">GOLF DTV — dtvclub.com/golf-dtv ｜ DTVClub — dtvclub.com</div>
+    <div class="footer-right">1 / 3</div>
+  </div>
+
+</div>
+</body>
+</html>
